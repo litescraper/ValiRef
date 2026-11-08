@@ -105,6 +105,20 @@ LANGCHAIN_PROJECT=ValiRef
 
 ---
 
+## Optional API-backed web search
+
+Set `LITESCRAPE_API_KEY` to register the optional `litescrape` online source.
+`LITESCRAPE_BASE_URL` defaults to `https://api.litescrape.com`; the adapter
+uses `GET /api/google/search` with bearer authentication. Select it explicitly
+with `OnlineAggregateSearch().asearch(query, sources=["litescrape"])`, or use
+`LitescrapeSearch` from `src.core.search` directly.
+
+Default scholarly sources are unchanged. The new source keeps the existing
+cache, queue, retry and circuit-breaker behavior; the online aggregator's
+eight-second per-source timeout still applies. Results contain web snippets,
+not verified abstracts, authors, publication dates or citation evidence. Do
+not treat a general web hit as proof that a citation is valid.
+
 ## Usage
 
 ### Validate References in a PDF

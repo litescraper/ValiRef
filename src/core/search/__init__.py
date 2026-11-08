@@ -12,6 +12,7 @@ from .base import SearchResult, SearchTool, run_in_executor_cancellable
 from .sources import (
     ArxivSearch,
     DuckDuckGoSearch,
+    LitescrapeSearch,
     LocalDBSearch,
     OpenAlexSearch,
     OpenReviewSearch,
@@ -32,6 +33,7 @@ __all__ = [
     "OpenReviewSearch",
     "ScholarlySearch",
     "SemanticScholarSearch",
+    "LitescrapeSearch",
     # Aggregate tools
     "AggregateSearchFactory",
     "LocalAggregateSearch",
