@@ -105,6 +105,22 @@ LANGCHAIN_PROJECT=ValiRef
 
 ---
 
+## Optional API-backed web search
+
+Support any Serper.dev-compatible endpoint (like litescrape.com, serpbase.dev, serpensapi.org, and others)
+
+Set `SERPER_API_KEY` to register the optional `serper` online source.
+`SERPER_BASE_URL` defaults to `https://google.serper.dev`; the adapter appends
+`/search` and uses `X-API-KEY` authentication. Select it explicitly with
+`OnlineAggregateSearch().asearch(query, sources=["serper"])`, or use
+`SerperSearch` from `src.core.search` directly.
+
+Default scholarly sources are unchanged. The new source keeps the existing
+cache, queue, retry and circuit-breaker behavior; the online aggregator's
+eight-second per-source timeout still applies. Results contain web snippets,
+not verified abstracts, authors, publication dates or citation evidence. Do
+not treat a general web hit as proof that a citation is valid.
+
 ## Usage
 
 ### Validate References in a PDF

@@ -1,5 +1,6 @@
 """Online aggregate search using external APIs."""
 import asyncio
+import os
 from typing import Union
 
 from ...logger import logger
@@ -8,6 +9,7 @@ from ..sources.arxiv import ArxivSearch
 from ..sources.duckduckgo import DuckDuckGoSearch
 from ..sources.openalex import OpenAlexSearch
 from ..sources.openreview import OpenReviewSearch
+from ..sources.serper import SerperSearch
 from .utils import prune_search_result
 
 
@@ -23,12 +25,16 @@ class OnlineAggregateSearch:
             "openalex": OpenAlexSearch(),
             "duckduckgo": DuckDuckGoSearch(),
         }
+        if os.getenv("SERPER_API_KEY"):
+            self.tools["serper"] = SerperSearch()
 
     def get_tool_description(self) -> str:
         return (
             "Search multiple online sources concurrently for papers matching the query. "
-            "Sources can be a list of: 'arxiv', 'openreview', 'openalex', 'duckduckgo'. "
+            f"Sources can be a list of: {', '.join(self.tools)}. "
             "Returns a combined list of paper details."
+            + (" Web search hits are snippets, not verified scholarly metadata."
+               if "serper" in self.tools else "")
         )
 
     async def asearch(

@@ -6,6 +6,7 @@ from .openalex import OpenAlexSearch
 from .openreview import OpenReviewSearch
 from .scholarly import ScholarlySearch
 from .semantic_scholar import SemanticScholarSearch
+from .serper import SerperSearch
 
 __all__ = [
     "ArxivSearch",
@@ -15,4 +16,5 @@ __all__ = [
     "OpenReviewSearch",
     "ScholarlySearch",
     "SemanticScholarSearch",
+    "SerperSearch",
 ]

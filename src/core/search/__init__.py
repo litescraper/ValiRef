@@ -17,6 +17,7 @@ from .sources import (
     OpenReviewSearch,
     ScholarlySearch,
     SemanticScholarSearch,
+    SerperSearch,
 )
 
 __all__ = [
@@ -32,6 +33,7 @@ __all__ = [
     "OpenReviewSearch",
     "ScholarlySearch",
     "SemanticScholarSearch",
+    "SerperSearch",
     # Aggregate tools
     "AggregateSearchFactory",
     "LocalAggregateSearch",
